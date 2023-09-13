@@ -5,35 +5,97 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Skill & Knowledge Exchange Hub</title>
     <link rel="stylesheet" href="../style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            padding: 1rem;
+            width: 100%;
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+    
+        .notification {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #f9f9f9;
+        }
+    
+        button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        
+        }
+
+    </style>
+
 </head>
 <body>
     <header>
         <h1>Skill & Knowledge Exchange Hub</h1>
         <nav>
             <ul>
-                <li><a href="index.html">Home</a></li>
+                <li><a href="../index.html">Home</a></li>
                 <li><a href="Browse-Skills.html">Browse Skills</a></li>
-                <li><a href="Post-a-Skill.html">Post a Skill</a></li>
+                <li><a href="Post-a-Skill.html">Notifications</a></li>
                 <li><a href="About.html">About</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <section id="search">
-            <h2>Find Skills</h2>
-            <form>
-                <input type="text" id="search-input" placeholder="Search for skills...">
-                <button type="submit">Search</button>
-            </form>
-        </section>
+        <div class="header">
+            <div class="team-name">Notifications</div>
+        </div>
 
-        <section id="skills-list">
-            <h2>Available Skills</h2>
-            <ul>
-                <!-- Skill listings will be generated dynamically using JavaScript -->
-            </ul>
-        </section>
+        <div class="container" id="notificationContainer">
+            <!-- Notifications will be displayed here -->
+        </div>
+    
+        <script>
+            const notificationContainer = document.getElementById("notificationContainer");
+    
+            // Function to add a new notification
+            function addNotification(message) {
+                const notification = document.createElement("div");
+                notification.className = "notification";
+                notification.innerHTML = `
+                    <h2>New Notification</h2>
+                    <p>${message}</p>
+                    <button onclick="removeNotification(this)">Dismiss</button>
+                `;
+                notificationContainer.appendChild(notification);
+            }
+    
+            // Function to remove a notification
+            function removeNotification(button) {
+                const notification = button.parentElement;
+                notificationContainer.removeChild(notification);
+            }
+    
+            // Simulate receiving new notifications (you can replace this with actual notifications)
+            setTimeout(() => {
+                addNotification("You have a new message.");
+                addNotification("A new email has arrived.");
+            }, 2000);
+        </script>
     </main>
 
     <footer>
